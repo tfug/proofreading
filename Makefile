@@ -10,4 +10,4 @@ run-check:
   /bin/ash proofreading/proofreading.sh
 
 clear-output:
-	rm -rf proofreading/output
+	rm -r output
