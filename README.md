@@ -9,7 +9,6 @@ $ git clone https://github.com/tensorflow/docs
 $ cd docs/
 $ git clone https://github.com/tfug/proofreading proofreading
 $ cd proofreading
-$ make build-image   # create Docker image to run text lint
 $ make run-check       # run text lint on the Docker container
 $ make clear-output   # remove temporary files
 ```
