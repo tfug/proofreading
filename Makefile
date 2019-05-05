@@ -1,12 +1,12 @@
 build-image:
-	docker build --no-cache -t chie8842/tensorflow_docs_proofreading .
+	docker build --no-cache -t tfug/proofreading .
 
 run-check:
 	docker run \
   -it \
   --rm \
   -v $(PWD)/..:/usr/local/documents \
-  chie8842/tensorflow_docs_proofreading \
+  tfug/proofreading \
   /bin/ash proofreading/proofreading.sh
 
 clear-output:
