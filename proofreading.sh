@@ -2,24 +2,21 @@
 
 function create_markdown() {
   dirname=`ls -1 site/${lang}`
-
-  for dir in ${dirname}; do
-    absdir=site/${lang}/${dir}
-    if [ -d $absdir ]; then
-      subdirs=`ls -1 ${absdir}`
-      for subdir in ${subdirs}; do
-          output_dir="proofreading/output/${lang}/${dir}/${subdir}"
-
-          mkdir -p ${output_dir}
-          jupyter nbconvert --to markdown ${absdir}/${subdir}/*.ipynb --output-dir ${output_dir}
-      done
-    fi
+  files=`find site/ja -maxdepth 5 -type f |grep .ipynb`
+  #echo ${files}
+  for file in ${files}; do
+    dir=`dirname ${file}`
+    output_dir=${dir//site\/ja/proofreading\/output\/ja}
+    echo $output_dir
+    mkdir -p ${output_dir}
+    jupyter nbconvert --to markdown ${file} --output-dir ${output_dir}
   done
 }
 
 function exec_redpen() {
   termfile=terminologies.txt
-  redpen --conf proofreading/redpen-conf.xml proofreading/output/${lang}/*/*/*
+  redpen --conf proofreading/redpen-conf.xml proofreading/output/${lang}/*/*/*.md
+  redpen --conf proofreading/redpen-conf.xml proofreading/output/${lang}/*/*.md
 }
 
 lang=ja
