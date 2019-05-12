@@ -64,3 +64,6 @@ checkpoint	チェックポイント
 沿う	そう
 沿って	そって
 沿った	そった
+レイヤ	レイヤー
+ライフタイム	存続期間
+Tensorflow	TensorFlow
