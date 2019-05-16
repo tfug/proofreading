@@ -1,9 +1,7 @@
 #!/bin/bash
 
 function create_markdown() {
-  dirname=`ls -1 site/${lang}`
   files=`find site/ja -maxdepth 5 -type f |grep .ipynb`
-  #echo ${files}
   for file in ${files}; do
     dir=`dirname ${file}`
     output_dir=${dir//site\/ja/proofreading\/output\/ja}
