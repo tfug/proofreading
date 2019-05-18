@@ -12,7 +12,6 @@ function create_markdown() {
 }
 
 function exec_redpen() {
-  termfile=terminologies.txt
   docs=`find proofreading/output/ja -maxdepth 3 -type f |grep .md`
   redpen --conf proofreading/redpen-conf.xml ${docs}
 }
