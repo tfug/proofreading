@@ -67,3 +67,4 @@ checkpoint	チェックポイント
 レイヤ	レイヤー
 ライフタイム	存続期間
 Tensorflow	TensorFlow
+ディレクトリー	ディレクトリ
