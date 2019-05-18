@@ -9,8 +9,15 @@ $ git clone https://github.com/tensorflow/docs
 $ cd docs/
 $ git clone https://github.com/tfug/proofreading proofreading
 $ cd proofreading
-$ make run-check       # run text lint on the Docker container
-$ make clear-output   # remove temporary files
+$ bin/run-check       # run text lint on the Docker container
+$ bin/clear-output   # remove temporary files
+```
+
+If you would like to check one specific translated file,
+please give the relative path from tensorflow/docs as argument of `bin/run-check` command as below.
+
+```
+$ bin/run-check site/ja/tutorials/keras/index.md
 ```
 
 # Why use RedPen?
