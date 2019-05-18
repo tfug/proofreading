@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function create_markdown() {
-  files=`find site/ja -maxdepth 5 -type f |grep .ipynb`
+  files=`find site/${lang} -maxdepth 5 -type f |grep .ipynb`
   for file in ${files}; do
     dir=`dirname ${file}`
     output_dir=${dir//site\/ja/proofreading\/output\/ja}
@@ -12,10 +12,10 @@ function create_markdown() {
 }
 
 function copy_markdown() {
-  files=`find site/ja -maxdepth 5 -type f |grep .md`
+  files=`find site/${lang} -maxdepth 5 -type f |grep .md`
   for file in ${files}; do
     dir=`dirname ${file}`
-    output_dir=${dir//site\/ja/proofreading\/output\/ja}
+    output_dir=${dir//site/proofreading\/output}
     echo $output_dir
     mkdir -p ${output_dir}
     cp ${file} ${output_dir}/
