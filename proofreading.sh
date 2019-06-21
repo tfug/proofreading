@@ -17,6 +17,22 @@ function create_markdowns() {
   done
 }
 
+# convert one html to markdown and save to output directory
+function create_markdown_from_html() {
+  dir=`dirname ${file}`
+  output_dir=${dir//site/proofreading\/output}
+  echo $output_dir
+  mkdir -p ${output_dir}
+  python proofreading/src/html_converter.py --input_file ${file} --output_dir ${output_dir}
+}
+
+# find html files, convert to markdown and save to output directory
+function create_markdowns_from_html() {
+  files=`find site/ja -maxdepth 5 -type f |grep .html`
+  for file in ${files}; do
+    create_markdown_from_html
+  done
+}
 function copy_markdown() {
   files=`find site/${lang} -maxdepth 5 -type f |grep .md`
   for file in ${files}; do
@@ -44,6 +60,10 @@ if [ $# -eq 1 ]; then
     create_markdown
     base_filename=${file##*/}
     redpen --conf proofreading/redpen-conf.xml ${output_dir}/${base_filename%.*}.md
+  elif [ ${file##*.} = "html" ]; then
+    create_markdown_from_html
+    base_filename=${file##*/}
+    redpen --conf proofreading/redpen-conf.xml ${output_dir}/${base_filename%.*}.md
   elif [ ${file##*.} = "md" ]; then
     redpen --conf proofreading/redpen-conf.xml ${file}
   else
@@ -54,6 +74,7 @@ if [ $# -eq 1 ]; then
 else
   echo "check all files"
   create_markdowns
+  create_markdowns_from_html
   copy_markdown
   exec_redpen
 fi
