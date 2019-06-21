@@ -68,3 +68,5 @@ checkpoint	チェックポイント
 ライフタイム	存続期間
 Tensorflow	TensorFlow
 ディレクトリー	ディレクトリ
+カラム	列
+コラム	列
