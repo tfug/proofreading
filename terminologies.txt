@@ -68,6 +68,10 @@ checkpoint	チェックポイント
 ライフタイム	存続期間
 Tensorflow	TensorFlow
 ディレクトリー	ディレクトリ
+ウェイト	重み
+ウエイト	重み
+weight	重み
+Weight	重み
 eager実行	Eager Execution
 eager execution	Eager Execution
 Eager execution	Eager Execution
