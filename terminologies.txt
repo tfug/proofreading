@@ -71,3 +71,16 @@ Tensorflow	TensorFlow
 コミュニティー	コミュニティ
 ユーザ	ユーザー
 サーバ	サーバー
+カラム	列
+コラム	列
+ウェイト	重み
+ウエイト	重み
+weight	重み
+Weight	重み
+eager実行	Eager Execution
+eager execution	Eager Execution
+Eager execution	Eager Execution
+Eager実行	Eager Execution
+eager 実行	Eager Execution
+Eager 実行	Eager Execution
+購買	勾配
