@@ -18,7 +18,8 @@ def main(input_file, output_dir):
             print(f'{input_file} does not exist')
             sys.exit(1)
         text = html2text.html2text(html)
-        output = os.path.join(output_dir, os.path.basename(input_file))
+        output_file = '{}.md'.format(os.path.basename(input_file).split('.')[0])
+        output = os.path.join(output_dir, output_file)
         try:
             with open(output, 'w') as f:
                 f.write(text)
