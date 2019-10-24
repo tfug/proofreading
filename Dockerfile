@@ -5,7 +5,7 @@ RUN apk update
 RUN apk --no-cache add tar wget openjdk8 gcc pkgconfig zeromq zeromq-dev musl-dev
 
 # install python package
-RUN pip install jupyter
+RUN pip install jupyter click html2text
 
 # download redpen
 # RUN wget https://github.com/redpen-cc/redpen/archive/redpen-1.10.2.tar.gz

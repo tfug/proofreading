@@ -1,3 +1,3 @@
 #!/bin/bash
-docker build --no-cache -t chie8842/proofreading .
+docker build --no-cache -t tfug/proofreading .
 
