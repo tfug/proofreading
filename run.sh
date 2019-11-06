@@ -2,7 +2,7 @@
 
 # Check the number of arguments
 if [ $# -ne 2 ]; then
-  echo "Error: Invalid arguments" 1>&2
+  echo "Error: Invalid arguments"
   echo "Usage: ./bin/run.sh <repository name> <branch name>"
   exit 1
 fi
