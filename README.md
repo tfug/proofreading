@@ -4,20 +4,35 @@
 
 # Usage
 
+Basic usage is below:
+
+```bash
+./run.sh ${REPOSITORY} ${BRANCH}
 ```
-$ git clone https://github.com/tensorflow/docs
-$ cd docs/
-$ git clone https://github.com/tfug/proofreading proofreading
-$ cd proofreading
-$ bin/run-check       # run text lint on the Docker container
-$ bin/clear-output   # remove temporary files
+For example:
+
+```bash
+./run.sh tensorflow/docs master
 ```
 
-If you would like to check one specific translated file,
-please give the relative path from tensorflow/docs as argument of `bin/run-check` command as below.
+The above command works
 
+1. Clone GitHub repository
+2. Convert `*.ipynb` to `*.md` with `jupyter nbconvert`
+3. Apply RedPen to `*.md`
+
+We recommend you use the command as
+
+```bash
+./run.sh tensorflow/docs master > result.txt
 ```
-$ bin/run-check site/ja/tutorials/keras/index.md
+
+to write the result to a text file.
+
+If you would like to use Docker, you can also execute the proofreading as
+
+```bash
+./run_docker.sh tensorflow/docs master > result.txt
 ```
 
 # Why use RedPen?
@@ -26,8 +41,3 @@ We are working on translation with more than one person. So It is expected that 
 [Redpen](http://redpen.cc/) is a proofreading tool to help writing documents that need to adhere to a writing standard. 
 We can guarantee the quality of documents without lose writing speed while distributing translation tasks among multiple people.
 RedPen officially support English and Japanese, but we can use some of the functions with another language.
-
-
-checking process consists of the following two parts.
-1. run `jupyter nbconvert` to convert jupyter notebook to markdown
-2. run `redpen`  to read proofs

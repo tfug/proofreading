@@ -1,3 +1,5 @@
+# TODO: Install git
+
 FROM python:3.7.3-alpine3.9
 
 # install java etc
@@ -14,7 +16,6 @@ RUN tar xvf redpen-1.10.1.tar.gz
 RUN mkdir -p /user/local/redpen
 RUN mv redpen-distribution-1.10.1 /usr/local/redpen
 # RUN mv redpen-redpen-1.10.2 /usr/local/redpen
-
 
 # add redpen to PATH
 ENV PATH="/usr/local/redpen/bin:${PATH}"
