@@ -27,16 +27,12 @@ git clone -b ${BRANCH} ${GITHUB_REPOSITORY_URL} ${TEMP_DIR}/${GITHUB_REPOSITORY}
 # Convert all notebooks to markdowns
 notebooks=`find ${TEMP_DIR}/${GITHUB_REPOSITORY}/site/ja -type f | grep .ipynb`
 for notebook in ${notebooks}; do
-  jupyter nbconvert \
-    --to markdown \
-    ${notebook}
+  jupyter nbconvert --to markdown ${notebook}
 done
 
 # Apply RedPen to all markdowns
 files=`find ${TEMP_DIR}/${GITHUB_REPOSITORY}/site/ja -type f | grep .md`
 for file in ${files}; do
-  dir=`dirname ${file}`
-  filename=`basename ${file}`
   echo "[${file}]"
   redpen --result-format plain2 ${file}
 done
