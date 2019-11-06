@@ -17,7 +17,7 @@ echo "BRANCH: ${BRANCH}"
 
 TEMP_DIR="ghrepos"
 
-# Remove
+# Remove temporary directory
 rm -rf ${TEMP_DIR}
 mkdir ${TEMP_DIR}
 
