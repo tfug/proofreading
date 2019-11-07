@@ -2,37 +2,33 @@
 
 [tensorflow/docs](https://github.com/tensorflow/docs)の日本語訳の表記ゆれ等をチェックするツールです。
 
-# Usage
+## Usage
 
-Basic usage is below:
-
-```bash
-./run.sh ${REPOSITORY} ${BRANCH}
-```
-For example:
-
-```bash
-./run.sh tensorflow/docs master
-```
-
-The above command works
+This tool works to
 
 1. Clone GitHub repository
 2. Convert `*.ipynb` to `*.md` with `jupyter nbconvert`
 3. Apply RedPen to `*.md`
+4. Output the result to a text file
 
-We recommend you use the command as
+Basic usage is as below:
 
 ```bash
-./run.sh tensorflow/docs master > result.txt
+./bin/run ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
 ```
 
-to write the result to a text file.
+### Without Docker
+
+```bash
+./bin/run tensorflow/docs master result.txt
+```
+
+### With Docker
 
 If you would like to use Docker, you can also execute the proofreading as
 
 ```bash
-./run_docker.sh tensorflow/docs master > result.txt
+./bin/run-docker tensorflow/docs master result.txt
 ```
 
 # Why use RedPen?
