@@ -14,13 +14,13 @@ This tool works to
 Basic usage is as below:
 
 ```bash
-./bin/run ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
+$ ./bin/run ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
 ```
 
 ### Without Docker
 
 ```bash
-./bin/run tensorflow/docs master result.txt
+$ ./bin/run tensorflow/docs master result.txt
 ```
 
 ### With Docker
@@ -28,10 +28,10 @@ Basic usage is as below:
 If you would like to use Docker, you can also execute the proofreading as
 
 ```bash
-./bin/run-docker tensorflow/docs master result.txt
+$ ./bin/run-docker tensorflow/docs master result.txt
 ```
 
-# Why use RedPen?
+## Why use RedPen?
 
 We are working on translation with more than one person. So It is expected that a lot of orthographical variants will occur.
 [Redpen](http://redpen.cc/) is a proofreading tool to help writing documents that need to adhere to a writing standard. 
