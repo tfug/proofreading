@@ -4,7 +4,7 @@ FROM python:3.7.3-alpine3.9
 
 # install java etc
 RUN apk update
-RUN apk --no-cache add tar wget openjdk8 gcc pkgconfig zeromq zeromq-dev musl-dev
+RUN apk --no-cache add tar wget openjdk8 gcc pkgconfig zeromq zeromq-dev musl-dev git
 
 # install python package
 RUN pip install jupyter click html2text
