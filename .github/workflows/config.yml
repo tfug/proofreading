@@ -1,0 +1,15 @@
+name: actions
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Check all documents
+        run: |
+          ./bin/run-docker tensorflow/docs master result.txt
+          cat result.txt
