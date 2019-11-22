@@ -2,6 +2,6 @@
 
 docker run \
   --rm \
-  -v $(PWD):/usr/local/documents \
+  -v $(pwd):/usr/local/documents \
   tfug/proofreading \
   /bin/ash ./bin/run ${1} ${2} ${3}

@@ -1,7 +1,0 @@
-#!/bin/bash
-docker run \
--it \
---rm \
--v $(pwd)/..:/usr/local/documents \
-tfug/proofreading \
-/bin/ash proofreading/proofreading.sh $@
