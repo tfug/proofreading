@@ -1,5 +1,7 @@
 # Proofreading for TensorFlow docs translation
 
+![](https://github.com/tfug/proofreading/workflows/actions/badge.svg)
+
 [tensorflow/docs](https://github.com/tensorflow/docs)の日本語訳の表記ゆれ等をチェックするツールです。
 
 ## Usage
@@ -30,6 +32,8 @@ If you would like to use Docker, you can also execute the proofreading as
 ```bash
 $ ./bin/run-docker tensorflow/docs master result.txt
 ```
+
+It use Docker image [tfug/proofreading](https://hub.docker.com/r/tfug/proofreading).
 
 ## Why use RedPen?
 
