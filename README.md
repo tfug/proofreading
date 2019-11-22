@@ -33,7 +33,7 @@ If you would like to use Docker, you can also execute the proofreading as
 $ ./bin/run-docker tensorflow/docs master result.txt
 ```
 
-It use Docker image [tfug/proofreading](https://hub.docker.com/r/tfug/proofreading).
+It uses Docker image [tfug/proofreading](https://hub.docker.com/r/tfug/proofreading).
 
 ## Why use RedPen?
 
