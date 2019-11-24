@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Check the number of arguments
+if [ $# -ne 3 ]; then
+  echo "Error: Invalid arguments"
+  echo "Usage: ./bin/run.sh <repository name> <branch name> <output file>"
+  exit 1
+fi
+
+GITHUB_REPOSITORY=${1}
+GITHUB_REPOSITORY_URL="https://github.com/${GITHUB_REPOSITORY}"
+BRANCH=${2}
+OUTPUT_FILE=${3}
+
+# Show config
+echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+echo "GITHUB_REPOSITORY_URL: ${GITHUB_REPOSITORY_URL}"
+echo "BRANCH: ${BRANCH}"
+echo "OUTPUT_FILE: ${OUTPUT_FILE}"
+echo ""
+
+TEMP_DIR="ghrepos"
+
+# Remove temporary directory
+rm -rf ${TEMP_DIR}
+mkdir ${TEMP_DIR}
+
+# Clone GitHub repository
+git clone -b ${BRANCH} ${GITHUB_REPOSITORY_URL} ${TEMP_DIR}/${GITHUB_REPOSITORY}
+echo ""
+
+# Find diff files
+cd ${TEMP_DIR}/${GITHUB_REPOSITORY} && diff_files=$(git diff --name-only origin/master)
+echo "DIFF_FILES:"
+echo ${diff_files}
+echo ""
+cd -
+
+# Create output file
+echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}" > "${OUTPUT_FILE}"
+echo "BRANCH: ${BRANCH}" >> "${OUTPUT_FILE}"
+echo "" >> "${OUTPUT_FILE}"
+
+for file in ${diff_files}; do
+
+  # The case diff file is markdown
+  if [ ${file##*.} = "md" ]; then
+    markdown=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file}
+    echo "[${markdown}]" >> "${OUTPUT_FILE}" 
+    redpen --result-format plain2 ${markdown} >> "${OUTPUT_FILE}"
+
+  # The case diff file is notebook
+  elif [ ${file##*.} = "ipynb" ]; then
+    notebook=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file}
+    markdown=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file%.ipynb}.md
+    jupyter nbconvert --to markdown ${notebook}
+    echo "[${markdown}]" >> "${OUTPUT_FILE}"
+    redpen --result-format plain2 ${markdown} >> "${OUTPUT_FILE}"
+  fi
+
+done

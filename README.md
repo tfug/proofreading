@@ -11,24 +11,43 @@ This tool works to
 3. Apply RedPen to `*.md`
 4. Output the result to a text file
 
+### Check all files
+
 Basic usage is as below:
 
 ```bash
 $ ./bin/run ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
 ```
 
-### Without Docker
+#### Without Docker
 
 ```bash
 $ ./bin/run tensorflow/docs master result.txt
 ```
 
-### With Docker
+#### With Docker
 
 If you would like to use Docker, you can also execute the proofreading as
 
 ```bash
 $ ./bin/run-docker tensorflow/docs master result.txt
+```
+
+### Check files which have diff from `origin/master` branch
+
+Checking all files take too much time to review only one pull request.
+Then, we can check only the difference from `origin/master` branch.
+
+#### Without Docker
+
+```bash
+$ ./bin/diff ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
+```
+
+#### With Docker
+
+```bash
+$ ./bin/diff-docker ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
 ```
 
 ## Why use RedPen?
