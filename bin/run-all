@@ -1,0 +1,26 @@
+#!/bin/ash
+
+###################################################################
+# Script Name	: run-all
+# Description	: A script to check orthographical variants for all
+#               documents in specified branch of repository.
+#               This script is child script of bin/run.
+###################################################################
+
+# Convert all notebooks to markdowns
+notebooks=`find ${TEMP_DIR}/${GITHUB_REPOSITORY}/site/ja -type f | grep .ipynb`
+for notebook in ${notebooks}; do
+  jupyter nbconvert --to markdown ${notebook}
+done
+
+# Create output file
+echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}" > "${LOG_FILE}"
+echo "BRANCH: ${BRANCH}" >> "${LOG_FILE}"
+echo "" >> "${LOG_FILE}"
+
+# Apply RedPen to all markdowns
+files=`find ${TEMP_DIR}/${GITHUB_REPOSITORY}/site/ja -type f | grep .md`
+for file in ${files}; do
+  echo "[${file}]" >> "${LOG_FILE}"
+  redpen --result-format plain2 ${file} >> "${LOG_FILE}"
+done
