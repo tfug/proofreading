@@ -11,43 +11,36 @@ This tool works to
 3. Apply RedPen to `*.md`
 4. Output the result to a text file
 
-### Check all files
+### Description
+
+There are following 2 patterns of checking with this script.
+1. Check documents which are differ from `origin/master`(default)
+2. Check all documents(with `all` option)
 
 Basic usage is as below:
 
 ```bash
-$ ./bin/run ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
+$ ./bin/run ${REPOSITORY} ${BRANCH} [all]
 ```
 
-#### Without Docker
+### Run script without Docker
 
 ```bash
-$ ./bin/run tensorflow/docs master result.txt
+# To check files which are differ from `origin/master` branch
+$ ./bin/run tensorflow/docs master
+# To check all files
+$ ./bin/run tensorflow/docs master all
 ```
 
-#### With Docker
+### Run script with Docker
 
 If you would like to use Docker, you can also execute the proofreading as
 
 ```bash
-$ ./bin/run-docker tensorflow/docs master result.txt
-```
-
-### Check files which have diff from `origin/master` branch
-
-Checking all files take too much time to review only one pull request.
-Then, we can check only the difference from `origin/master` branch.
-
-#### Without Docker
-
-```bash
-$ ./bin/diff ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
-```
-
-#### With Docker
-
-```bash
-$ ./bin/diff-docker ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
+# To check files which are differ from `origin/master` branch
+$ ./bin/run-docker tensorflow/docs master
+# To check all files
+$ ./bin/run-docker tensorflow/docs master all
 ```
 
 ## Why use RedPen?
