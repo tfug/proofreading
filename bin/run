@@ -51,5 +51,5 @@ if [ -n "${TYPE}" -a "${TYPE}" = "all" ]; then
   ./bin/run-all $@
 else
   echo "Run bin/run-diff"
-  /bin/ash bin/run-diff $@
+  ./bin/run-diff $@
 fi
