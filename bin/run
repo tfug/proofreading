@@ -48,7 +48,7 @@ echo ""
 # execute run-all or run-diff script
 if [ -n "${TYPE}" -a "${TYPE}" = "all" ]; then
   echo "Run bin/run-all"
-  /bin/ash bin/run-all $@
+  ./bin/run-all $@
 else
   echo "Run bin/run-diff"
   /bin/ash bin/run-diff $@
