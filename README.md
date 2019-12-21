@@ -1,8 +1,8 @@
 # Proofreading for TensorFlow docs translation
 
-[tensorflow/docs](https://github.com/tensorflow/docs)の日本語訳の表記ゆれ等をチェックするツールです。
+## Description
 
-## Usage
+[tensorflow/docs](https://github.com/tensorflow/docs)の日本語訳の表記ゆれ等をチェックするツールです。
 
 This tool works to
 
@@ -11,20 +11,23 @@ This tool works to
 3. Apply RedPen to `*.md`
 4. Output the result to a text file
 
-### Description
 
 There are following 2 patterns of checking with this script.
 1. Check documents which are differ from `origin/master`(default)
 2. Check all documents(with `all` option)
 
-Basic usage is as below:
+## How To Use
 
-```bash
-$ ./bin/run ${REPOSITORY} ${BRANCH} [all]
-```
+There are following 2 ways to run this script.
 
 ### Run script without Docker
 
+#### requirements
+
+* Install [`jupyter`](https://jupyter.org/install) and [`RedPen`](http://redpen.cc/docs/1.10/index.html)
+* bin directory of `RedPen` should be added to `PATH` variable.
+
+#### Usage
 ```bash
 # To check files which are differ from `origin/master` branch
 $ ./bin/run tensorflow/docs master
@@ -33,9 +36,10 @@ $ ./bin/run tensorflow/docs master all
 ```
 
 ### Run script with Docker
+#### requirements
+* Install [Docker](https://www.docker.com/products/docker-desktop) 
 
-If you would like to use Docker, you can also execute the proofreading as
-
+#### Usage
 ```bash
 # To check files which are differ from `origin/master` branch
 $ ./bin/run-docker tensorflow/docs master
