@@ -5,11 +5,19 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Check all documents
-        run: |
-          ./bin/run-docker tensorflow/docs master result.txt
-          cat result.txt
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Check diff
+        uses: docker://tfug/proofreading:latest
+        with:
+          args: ./bin/run tensorflow/docs master
+
+      - name: Check all
+        uses: docker://tfug/proofreading:latest
+        with: 
+          args: ./bin/run tensorflow/docs master all
