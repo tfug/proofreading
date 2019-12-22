@@ -1,5 +1,7 @@
 # Proofreading for TensorFlow docs translation
 
+![](https://github.com/tfug/proofreading/workflows/actions/badge.svg)
+
 ## Description
 
 [tensorflow/docs](https://github.com/tensorflow/docs)の日本語訳の表記ゆれ等をチェックするツールです。
