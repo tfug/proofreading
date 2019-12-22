@@ -1,10 +1,8 @@
 # Proofreading for TensorFlow docs translation
 
-![](https://github.com/tfug/proofreading/workflows/actions/badge.svg)
+## Description
 
 [tensorflow/docs](https://github.com/tensorflow/docs)の日本語訳の表記ゆれ等をチェックするツールです。
-
-## Usage
 
 This tool works to
 
@@ -13,24 +11,40 @@ This tool works to
 3. Apply RedPen to `*.md`
 4. Output the result to a text file
 
-Basic usage is as below:
 
+There are following 2 patterns of checking with this script.
+1. Check documents which are differ from `origin/master`(default)
+2. Check all documents(with `all` option)
+
+## How To Use
+
+There are following 2 ways to run this script.
+
+### Run script without Docker
+
+#### requirements
+
+* Install [`jupyter`](https://jupyter.org/install) and [`RedPen`](http://redpen.cc/docs/1.10/index.html)
+* bin directory of `RedPen` should be added to `PATH` variable.
+
+#### Usage
 ```bash
-$ ./bin/run ${REPOSITORY} ${BRANCH} ${OUTPUT_FILE}
+# To check files which are differ from `origin/master` branch
+$ ./bin/run tensorflow/docs master
+# To check all files
+$ ./bin/run tensorflow/docs master all
 ```
 
-### Without Docker
+### Run script with Docker
+#### requirements
+* Install [Docker](https://www.docker.com/products/docker-desktop) 
 
+#### Usage
 ```bash
-$ ./bin/run tensorflow/docs master result.txt
-```
-
-### With Docker
-
-If you would like to use Docker, you can also execute the proofreading as
-
-```bash
-$ ./bin/run-docker tensorflow/docs master result.txt
+# To check files which are differ from `origin/master` branch
+$ ./bin/run-docker tensorflow/docs master
+# To check all files
+$ ./bin/run-docker tensorflow/docs master all
 ```
 
 It uses Docker image [tfug/proofreading](https://hub.docker.com/r/tfug/proofreading).

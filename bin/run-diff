@@ -1,0 +1,39 @@
+#!/bin/sh
+
+###################################################################
+# Script Name	: run-diff
+# Description	: A script to check orthographical variants for
+#               documents which are differ form master branch of
+#               https://github.com/tensorflow/docs repository.
+#               This script is child script of bin/run.
+###################################################################
+# Find diff files
+cd ${TEMP_DIR}/${GITHUB_REPOSITORY} && diff_files=$(git diff --name-only origin/master)
+echo "DIFF_FILES:"
+echo ${diff_files}
+echo ""
+cd -
+
+# Create output file
+echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}" > "${LOG_FILE}"
+echo "BRANCH: ${BRANCH}" >> "${LOG_FILE}"
+echo "" >> "${LOG_FILE}"
+
+for file in ${diff_files}; do
+
+  # The case diff file is markdown
+  if [ ${file##*.} = "md" ]; then
+    markdown=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file}
+    echo "[${markdown}]" >> "${LOG_FILE}" 
+    redpen --result-format plain2 ${markdown} >> "${LOG_FILE}"
+
+  # The case diff file is notebook
+  elif [ ${file##*.} = "ipynb" ]; then
+    notebook=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file}
+    markdown=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file%.ipynb}.md
+    jupyter nbconvert --to markdown ${notebook}
+    echo "[${markdown}]" >> "${LOG_FILE}"
+    redpen --result-format plain2 ${markdown} >> "${LOG_FILE}"
+  fi
+
+done
