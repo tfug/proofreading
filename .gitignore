@@ -1,2 +1,4 @@
 # Temporary directory to clone GitHub repository
 ghrepos
+# Default log file
+result.txt
