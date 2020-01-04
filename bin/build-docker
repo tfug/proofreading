@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker build --no-cache -t tfug/proofreading .
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+docker build --no-cache -t tfug/proofreading ${SCRIPT_DIR}/../
