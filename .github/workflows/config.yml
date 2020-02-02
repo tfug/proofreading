@@ -15,9 +15,9 @@ jobs:
       - name: Check diff
         uses: docker://tfug/proofreading:latest
         with:
-          args: ./bin/run tensorflow/docs master
+          args: ./bin/run tensorflow/docs-l10n master
 
       - name: Check all
         uses: docker://tfug/proofreading:latest
         with: 
-          args: ./bin/run tensorflow/docs master all
+          args: ./bin/run tensorflow/docs-l10n master all
