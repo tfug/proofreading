@@ -16,9 +16,9 @@
 set -e
 
 # Check the number of arguments
-if [ $# -lt 2 -o $# -gt 3 ]; then
+if [ $# -lt 2 -o $# -gt 4 ]; then
   echo "Error: Invalid arguments"
-  echo "Usage: ./bin/run <repository name> <branch name> <run-type>"
+  echo "Usage: ./bin/run <repository name> <branch name> <run-type> <error limit (optional)>"
   exit 1
 fi
 
@@ -27,12 +27,14 @@ export GITHUB_REPOSITORY_URL="https://github.com/${GITHUB_REPOSITORY}"
 export BRANCH=${2}
 TYPE=${3}
 export LOG_FILE=result.txt
+export ERROR_LIMIT=${4:-1}
 
 # Show config
 echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
 echo "GITHUB_REPOSITORY_URL: ${GITHUB_REPOSITORY_URL}"
 echo "BRANCH: ${BRANCH}"
 echo "LOG_FILE: ${LOG_FILE}"
+echo "ERROR_LIMIT: ${ERROR_LIMIT}"
 echo ""
 
 export TEMP_DIR="ghrepos"

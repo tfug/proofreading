@@ -1,0 +1,23 @@
+name: actions
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Check diff
+        uses: docker://tfug/proofreading:latest
+        with:
+          args: ./bin/run tensorflow/docs-l10n master 10
+
+      - name: Check all
+        uses: docker://tfug/proofreading:latest
+        with: 
+          args: ./bin/run tensorflow/docs-l10n master all 10

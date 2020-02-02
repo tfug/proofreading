@@ -25,7 +25,7 @@ for file in ${diff_files}; do
   if [ ${file##*.} = "md" ]; then
     markdown=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file}
     echo "[${markdown}]" >> "${LOG_FILE}" 
-    redpen --result-format plain2 ${markdown} >> "${LOG_FILE}"
+    redpen --result-format plain2 ${markdown} --limit ${ERROR_LIMIT} >> "${LOG_FILE}"
 
   # The case diff file is notebook
   elif [ ${file##*.} = "ipynb" ]; then
@@ -33,7 +33,7 @@ for file in ${diff_files}; do
     markdown=${TEMP_DIR}/${GITHUB_REPOSITORY}/${file%.ipynb}.md
     jupyter nbconvert --to markdown ${notebook}
     echo "[${markdown}]" >> "${LOG_FILE}"
-    redpen --result-format plain2 ${markdown} >> "${LOG_FILE}"
+    redpen --result-format plain2 ${markdown} --limit ${ERROR_LIMIT} >> "${LOG_FILE}"
   fi
 
 done
