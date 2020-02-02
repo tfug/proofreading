@@ -22,5 +22,5 @@ echo "" >> "${LOG_FILE}"
 files=`find ${TEMP_DIR}/${GITHUB_REPOSITORY}/site/ja -type f | grep .md`
 for file in ${files}; do
   echo "[${file}]" >> "${LOG_FILE}"
-  redpen --result-format plain2 ${file} >> "${LOG_FILE}"
+  redpen --result-format plain2 --limit ${ERROR_LIMIT} ${file} >> "${LOG_FILE}"
 done
