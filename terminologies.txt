@@ -83,3 +83,4 @@ eager 実行	Eager Execution
 Eager 実行	Eager Execution
 購買	勾配
 常套句	イディオム
+案内書	ガイド
